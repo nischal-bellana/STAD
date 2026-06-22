@@ -1,0 +1,7 @@
+.venv
+.env
+Ouputs/
+*.csv
+tags
+*.html
+*.geojson

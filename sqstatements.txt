@@ -1,0 +1,13 @@
+CREATE EXTENSION IF NOT EXISTS postgis;
+
+-- 1. Explicitly set your primary key identifier
+ALTER TABLE earthquakes ADD PRIMARY KEY (event_id);
+
+-- 2. Alter the metadata column type to JSONB for fast nested queries
+ALTER TABLE earthquakes ALTER COLUMN metadata TYPE JSONB USING metadata::jsonb;
+
+-- 3. Create a spatial index (GiST) on the geometry column
+-- This transforms coordinate-based queries from full table scans into lightning-fast index lookups
+CREATE INDEX idx_earthquakes_geom 
+ON earthquakes 
+USING GIST (geometry);
