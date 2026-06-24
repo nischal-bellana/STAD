@@ -41,5 +41,5 @@ def import_to_postgis(file_path, db_connection_string, table_name="earthquakes")
 
 my_password = os.getenv('POSTGRES_PASSWORD')
 encoded_password = urllib.parse.quote_plus(my_password)
-CONN_STR = f'postgresql://postgres:{encoded_password}@localhost:5432/staddb'
+CONN_STR = f'postgresql://postgres:{encoded_password}@localhost:5433/staddb'
 import_to_postgis('Outputs/cleaned_earthquakes.csv', CONN_STR)
