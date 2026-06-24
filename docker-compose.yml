@@ -31,6 +31,16 @@ services:
       - db
       - redis
     restart: unless-stopped
+  frontend:
+      build: ./frontend  # Assuming your streamlit code is in a 'frontend' folder
+      ports:
+        - "8501:8501"
+      environment:
+        # Tell Streamlit to hit the internal Docker API service, not localhost
+        - API_URL=http://api:8000/api/v1/anomalies
+      depends_on:
+        - api
+      restart: unless-stopped
 
 volumes:
   postgres_data:
