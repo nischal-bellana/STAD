@@ -86,4 +86,4 @@ def run_earthquake_etl(csv_path, geojson_path, output_csv_path=None):
     return final_df
 
 # Example Usage:
-df_cleaned = run_earthquake_etl('query.csv', 'japan_prefectures.geojson', 'Outputs/cleaned_earthquakes.csv')
+#df_cleaned = run_earthquake_etl('query.csv', 'japan_prefectures.geojson', 'Outputs/cleaned_earthquakes.csv')
